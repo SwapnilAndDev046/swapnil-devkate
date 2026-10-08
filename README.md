@@ -1,4 +1,4 @@
-# Swapnil Devkate — Portfolio
+# Swapnil Devkate Portfolio
 
 Hi, I'm **Swapnil Devkate**, a Computer Engineering graduate and Backend Developer focused on building REST APIs and backend applications with **Java and Spring Boot**.
 
