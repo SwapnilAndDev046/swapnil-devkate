@@ -21,7 +21,7 @@ export default function IntroTerminal({ children }) {
   const [showWebsite, setShowWebsite] = useState(false);
 
   /* ---------------------------------------
-     Type command
+     Type terminal command
   --------------------------------------- */
   useEffect(() => {
     if (commandText.length >= command.length) return;
@@ -34,7 +34,7 @@ export default function IntroTerminal({ children }) {
   }, [commandText]);
 
   /* ---------------------------------------
-     Type code character-by-character
+     Type code character by character
   --------------------------------------- */
   useEffect(() => {
     if (commandText.length < command.length) return;
@@ -50,7 +50,6 @@ export default function IntroTerminal({ children }) {
       return () => clearTimeout(timer);
     }
 
-    /* Move to next line */
     if (currentLine < codeLines.length - 1) {
       const timer = setTimeout(() => {
         setCurrentLine((prev) => prev + 1);
@@ -60,7 +59,6 @@ export default function IntroTerminal({ children }) {
       return () => clearTimeout(timer);
     }
 
-    /* Code completely finished */
     const timer = setTimeout(() => {
       setCodeFinished(true);
     }, 300);
@@ -74,7 +72,7 @@ export default function IntroTerminal({ children }) {
   ]);
 
   /* ---------------------------------------
-     Show "Loading portfolio..."
+     Show loading
   --------------------------------------- */
   useEffect(() => {
     if (!codeFinished) return;
@@ -87,7 +85,7 @@ export default function IntroTerminal({ children }) {
   }, [codeFinished]);
 
   /* ---------------------------------------
-     Reveal actual portfolio
+     Reveal website
   --------------------------------------- */
   useEffect(() => {
     if (!showLoading) return;
@@ -100,7 +98,7 @@ export default function IntroTerminal({ children }) {
   }, [showLoading]);
 
   /* ---------------------------------------
-     Show actual website
+     Actual website
   --------------------------------------- */
   if (showWebsite) {
     return (
@@ -129,43 +127,44 @@ export default function IntroTerminal({ children }) {
   }
 
   return (
-    <div className="intro-screen fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden px-4">
+    <div className="intro-screen fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden px-3 py-4 sm:px-5">
 
       {/* ---------------------------------------
-          Background square pattern
-          Similar to Home section
+          Square background pattern
       --------------------------------------- */}
-      <div className="intro-grid absolute inset-0" />
+      <div className="intro-grid pointer-events-none absolute inset-0" />
 
       {/* Violet glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/10 blur-[150px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/10 blur-[110px] sm:h-[450px] sm:w-[450px] sm:blur-[150px]" />
 
       {/* ---------------------------------------
           Terminal
       --------------------------------------- */}
-      <div className="terminal-window relative w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 shadow-[0_0_100px_rgba(139,92,246,0.18)]">
+      <div className="terminal-window relative w-full max-w-3xl overflow-hidden rounded-xl border border-white/10 shadow-[0_0_60px_rgba(139,92,246,0.15)] sm:rounded-2xl sm:shadow-[0_0_100px_rgba(139,92,246,0.18)]">
 
         {/* macOS header */}
-        <div className="flex h-12 items-center justify-between border-b border-white/10 bg-[#151515]/95 px-4 backdrop-blur">
+        <div className="flex h-10 items-center justify-between border-b border-white/10 bg-[#151515]/95 px-3 backdrop-blur sm:h-12 sm:px-4">
 
-          <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57] sm:h-3 sm:w-3" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e] sm:h-3 sm:w-3" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840] sm:h-3 sm:w-3" />
           </div>
 
-          <span className="font-mono text-xs text-neutral-500">
+          <span className="max-w-[150px] truncate font-mono text-[10px] text-neutral-500 sm:max-w-none sm:text-xs">
             swapnil@portfolio
           </span>
 
-          <div className="w-[42px]" />
+          <div className="w-[30px] sm:w-[42px]" />
         </div>
 
-        {/* Terminal body */}
-        <div className="min-h-[390px] bg-[#090909]/95 p-5 font-mono text-sm backdrop-blur sm:p-8 sm:text-base">
+        {/* ---------------------------------------
+            Terminal body
+        --------------------------------------- */}
+        <div className="max-h-[78vh] min-h-[320px] overflow-y-auto bg-[#090909]/95 p-3.5 font-mono text-[12px] leading-6 backdrop-blur sm:min-h-[390px] sm:p-8 sm:text-base sm:leading-7">
 
-          {/* Terminal command */}
-          <div className="flex flex-wrap">
+          {/* Command */}
+          <div className="flex min-w-0 flex-wrap break-words">
 
             <span className="text-emerald-400">
               swapnil
@@ -183,7 +182,7 @@ export default function IntroTerminal({ children }) {
               :~$
             </span>
 
-            <span className="ml-2 text-neutral-300">
+            <span className="ml-1.5 text-neutral-300 sm:ml-2">
               {commandText}
 
               {commandText.length < command.length && (
@@ -192,49 +191,62 @@ export default function IntroTerminal({ children }) {
                 </span>
               )}
             </span>
-
           </div>
 
           {/* ---------------------------------------
               Code block
           --------------------------------------- */}
-          <div className="mt-7 rounded-xl border border-white/10 bg-[#050505] p-5 sm:p-6">
+          <div className="mt-5 overflow-x-auto rounded-lg border border-white/10 bg-[#050505] p-3.5 sm:mt-7 sm:rounded-xl sm:p-6">
 
-            {codeLines.map((line, index) => {
+            <div className="min-w-max">
 
-              if (index > currentLine) return null;
+              {codeLines.map((line, index) => {
+                if (index > currentLine) return null;
 
-              const visibleText =
-                index === currentLine
-                  ? line.slice(0, currentChar)
-                  : line;
+                const visibleText =
+                  index === currentLine
+                    ? line.slice(0, currentChar)
+                    : line;
 
-              return (
-                <div
-                  key={index}
-                  className="min-h-[28px] whitespace-pre leading-7"
-                >
-                  {formatCode(visibleText)}
+                return (
+                  <div
+                    key={index}
+                    className="whitespace-pre leading-6 sm:leading-7"
+                  >
+                    {formatCode(visibleText)}
 
-                  {/* Typing cursor */}
-                  {index === currentLine &&
-                    !codeFinished &&
-                    currentChar < line.length && (
-                      <span className="cursor-blink ml-[1px] text-violet-300">
-                        ▋
-                      </span>
-                    )}
-                </div>
-              );
-            })}
+                    {index === currentLine &&
+                      !codeFinished &&
+                      currentChar < line.length && (
+                        <span className="cursor-blink ml-[1px] text-violet-300">
+                          ▋
+                        </span>
+                      )}
+                  </div>
+                );
+              })}
 
+            </div>
           </div>
 
           {/* ---------------------------------------
-              Loading
+              Running
+          --------------------------------------- */}
+          {codeFinished && !showLoading && (
+            <div className="mt-5 flex items-center gap-2 text-[12px] text-neutral-500 sm:mt-7 sm:text-sm">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400 sm:h-2 sm:w-2" />
+
+              <span>
+                Running...
+              </span>
+            </div>
+          )}
+
+          {/* ---------------------------------------
+              Loading portfolio
           --------------------------------------- */}
           {codeFinished && showLoading && (
-            <div className="mt-7 flex items-center gap-2 text-neutral-300 animate-loading">
+            <div className="mt-5 flex items-center gap-2 text-[13px] text-neutral-300 animate-loading sm:mt-7 sm:text-base">
 
               <span className="text-violet-400">
                 →
@@ -251,19 +263,6 @@ export default function IntroTerminal({ children }) {
             </div>
           )}
 
-          {/* Tiny status before loading appears */}
-          {codeFinished && !showLoading && (
-            <div className="mt-7 flex items-center gap-2 text-neutral-500">
-
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-
-              <span>
-                Running...
-              </span>
-
-            </div>
-          )}
-
         </div>
       </div>
 
@@ -271,12 +270,10 @@ export default function IntroTerminal({ children }) {
           Animations
       --------------------------------------- */}
       <style jsx>{`
-
         .intro-screen {
           background: #050505;
         }
 
-        /* Square background pattern */
         .intro-grid {
           background-image:
             linear-gradient(
@@ -289,23 +286,23 @@ export default function IntroTerminal({ children }) {
               transparent 1px
             );
 
-          background-size: 45px 45px;
+          background-size: 32px 32px;
 
           mask-image: radial-gradient(
             ellipse at center,
-            black 30%,
+            black 25%,
             transparent 85%
           );
 
           -webkit-mask-image: radial-gradient(
             ellipse at center,
-            black 30%,
+            black 25%,
             transparent 85%
           );
         }
 
         .terminal-window {
-          background: rgba(8, 8, 8, 0.94);
+          background: rgba(8, 8, 8, 0.95);
         }
 
         .cursor-blink {
@@ -319,7 +316,7 @@ export default function IntroTerminal({ children }) {
         .loading-dots {
           display: inline-block;
           overflow: hidden;
-          width: 18px;
+          width: 16px;
           animation: dots 1.2s infinite;
         }
 
@@ -347,24 +344,23 @@ export default function IntroTerminal({ children }) {
           }
 
           33% {
-            width: 6px;
+            width: 5px;
           }
 
           66% {
-            width: 12px;
+            width: 10px;
           }
 
           100% {
-            width: 18px;
+            width: 16px;
           }
         }
 
-        @media (max-width: 640px) {
+        @media (min-width: 640px) {
           .intro-grid {
-            background-size: 32px 32px;
+            background-size: 45px 45px;
           }
         }
-
       `}</style>
     </div>
   );
