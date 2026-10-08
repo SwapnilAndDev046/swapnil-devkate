@@ -59,7 +59,7 @@ export default function HomeSection() {
         </div>
 
         {/* Keep the square developer card: it is one of the strongest visual elements in the design. */}
-        <div className="relative mx-auto w-full max-w-md lg:ml-auto">
+        <div className="relative mx-auto w-full max-w-md min-w-0 lg:ml-auto">
           <div className="absolute -inset-8 rounded-full bg-violet-500/10 blur-3xl" />
           <div className="glass relative overflow-hidden rounded-3xl p-6 sm:p-8">
             <div className="mb-6 flex items-center justify-between text-xs text-neutral-500">
