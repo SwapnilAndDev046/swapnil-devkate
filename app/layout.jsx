@@ -1,17 +1,17 @@
-import './globals.css';
-import { siteConfig } from '@/data/site';
+import "./globals.css";
+import { siteConfig } from "@/data/site";
 
 export const metadata = {
   metadataBase: new URL(siteConfig.url),
 
   title: {
     default: siteConfig.title,
-    template: '%s | Swapnil Devkate',
+    template: "%s | Swapnil Devkate",
   },
 
   description: siteConfig.description,
 
-  applicationName: 'Swapnil Devkate Portfolio',
+  applicationName: "Swapnil Devkate Portfolio",
 
   authors: [
     {
@@ -24,40 +24,45 @@ export const metadata = {
   publisher: siteConfig.name,
 
   keywords: [
-    'Swapnil Devkate',
-    'Swapnil Devkate portfolio',
-    'Swapnil Devkate developer',
-    'Swapnil Devkate backend developer',
-    'Swapnil Devkate Java developer',
-    'Swapnil Devkate Spring Boot developer',
-    'Java developer',
-    'Spring Boot developer',
-    'Java Spring Boot developer',
-    'backend developer Mumbai',
-    'Computer Engineer Mumbai',
-    'Computer Engineering graduate',
+    "Swapnil Devkate",
+    "Swapnil Devkate java",
+    "Swapnil Devkate portfolio",
+    "Swapnil Devkate developer",
+    "Swapnil Devkate backend developer",
+    "Swapnil Devkate Java developer",
+    "Swapnil Devkate Spring Boot developer",
+    "Java developer",
+    "Swapnil Devkate Mumbai",
+    "Java Developer Mumbai",
+    "Spring Boot Developer",
+    "Java Backend Developer",
+    "Spring Boot developer",
+    "Java Spring Boot developer",
+    "backend developer Mumbai",
+    "Computer Engineer Mumbai",
+    "Computer Engineering graduate",
   ],
 
   /* Google Search Console verification */
   verification: {
-    google: 'zbhq2aGEAaV9hC-CgjNlby1fRPWfbmuKfinW2wYPSyM',
+    google: "zbhq2aGEAaV9hC-CgjNlby1fRPWfbmuKfinW2wYPSyM",
   },
 
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
 
   openGraph: {
-    type: 'website',
+    type: "website",
     url: siteConfig.url,
-    siteName: 'Swapnil Devkate',
+    siteName: "Swapnil Devkate",
     title: siteConfig.title,
     description: siteConfig.description,
-    locale: 'en_IN',
+    locale: "en_IN",
   },
 
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
   },
@@ -69,16 +74,16 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-      'max-video-preview': -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 
